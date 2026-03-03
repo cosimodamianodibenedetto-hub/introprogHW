@@ -59,7 +59,8 @@ if [ ! -f  movies.dat ]; then
 fi
 
 # 4. look at first 4 rows of downloaded data in `movies.dat`. look at this output and try to understand how it is structured. the file ending is `dat`. however, how could you also denominate such a file?
-
+head -n 4 movies.dat
+## it could be reanamed as txt file, since it is a text file. the .dat extension is not very informative, but it is just a convention.
 
 # 5. look at first 4 rows of downloaded data in `movies.dat` redirect to a file called `first4.txt`
 head -n 4 movies.dat > first4.txt
@@ -99,13 +100,13 @@ echo ""
 # i.e. it will tell us *how many genres* that movie belonged to. No need to understand the `awk` part.
 # again, remove the # below, fill in for _filename_ and run
 
-# awk -F '::' '{print $3}' _filename_ | awk '{print split($0, a, "\\|")}'
+awk -F '::' '{print $3}' movies.dat | awk '{print split($0, a, "\\|")}'
 
 
 # 8. finish the pipeline by adding 2 commands, exactly like in class, that will produce a contingency table
 # we want to know how many movies belong to 0,1,2,... etc genres. 
 
-# awk -F '::' '{print $3}' _filename_ | awk '{print split($0, a, "\\|")}' | sort | uniq -c
+awk -F '::' '{print $3}' movies.dat | awk '{print split($0, a, "\\|")}' | sort | uniq -c
 
 # 9. redirect (>) the output of your pipeline to a file `outtable.txt` in the current directory
 awk -F '::' '{print $3}' movies.dat | awk '{print split($0, a, "\\|")}' | sort | uniq -c > outtable.txt
