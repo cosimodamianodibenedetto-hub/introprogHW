@@ -20,20 +20,19 @@ echo ""
 
 
 # 0. Tell me who worked on this together
-echo "student 1"   # please fill in names here
-echo "student 2"
+echo "Cosimodamiano Di Benedetto"   # please fill in names here
 
 # here is a list of tasks for you.
 # whenever a line says "don't touch" then you are not supposed to touch what comes below.
 # all lines where you need to take action are numbered.
 
 # 1. Go to your home directory:
-
+cd ~
 
 # 2. from your home, creating a directory structure: new folder `programming-hw`, and inside that folder create folder `hw1`
-
+mkdir -p ~/programming-hw/hw1
 # 3. go into that new directory, i.e. into ~/programming-hw/hw1
-
+cd ~/programming-hw/hw1
 # checking the folder exists now
 # don't touch
 [ -d ~/programming-hw/hw1 ] && echo "directory created successfully" || exit 1
@@ -63,7 +62,7 @@ fi
 
 
 # 5. look at first 4 rows of downloaded data in `movies.dat` redirect to a file called `first4.txt`
-
+head -n 4 movies.dat > first4.txt
 
 # don't touch
 if [ ! -f  first4.txt ]; then
@@ -109,14 +108,14 @@ echo ""
 # awk -F '::' '{print $3}' _filename_ | awk '{print split($0, a, "\\|")}' | sort | uniq -c
 
 # 9. redirect (>) the output of your pipeline to a file `outtable.txt` in the current directory
-
+awk -F '::' '{print $3}' movies.dat | awk '{print split($0, a, "\\|")}' | sort | uniq -c > outtable.txt
 
 # dont touch
 echo ""   # leave this untouched
 echo "here is my table:"   # this as well
 
 # 10. Print your table to screen
-
+cat outtable.txt
 
 
 #### End of your tasks
